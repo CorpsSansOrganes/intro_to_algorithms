@@ -1,6 +1,7 @@
 import pytest
 from sorts.insertion_sort import sort as insertion_sort
 from sorts.selection_sort import sort as selection_sort
+from searches.linear_search import search as linear_search
 
 def _test_sorting_algorithm(sort_func):
     # Test case 1: Array in ascending order
@@ -26,6 +27,26 @@ def _test_sorting_algorithm(sort_func):
     # Test case 6: Array with negative numbers
     A = [-5, 0, 3, -2, 1]
     assert sort_func(A) == sorted(A)
+
+def _test_search_algorithm(search_func):
+    # Test case 1: Trivial case 
+    A = [1, 2, 3, 4, 5]
+    assert search_func(A, 1) == A.index(1)
+
+    # Test case 2: Array with duplicate elements 
+    A = [1, 1, 2, 3, 4, 5]
+    assert search_func(A, 1) == A.index(1)
+
+    # Test case 3: Empty array 
+    A = []
+    assert search_func(A, 1) is None
+
+    # Test case 4: value isn't in array 
+    A = [123, 34, 1535, 3]
+    assert search_func(A, 1) is None
+
+def test_linear_search():
+    _test_search_algorithm(linear_search)
 
 def test_selection_sort():
     _test_sorting_algorithm(selection_sort)
