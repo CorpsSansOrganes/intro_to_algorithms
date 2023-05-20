@@ -8,6 +8,3 @@ def sort(arr: List[int]) -> List[int]:
             pos -= 1
         arr[pos + 1] = key
     return arr
-
-if __name__ == "__main__":
-    print(sort([5, 4, 3, 2, 1]))
