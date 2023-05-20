@@ -1,6 +1,6 @@
-import argparse
-import importlib
 import pytest
+import os
+import importlib
 
 def test_sorting_algorithm(sort_func):
     # Test case 1: Array in ascending order
@@ -27,20 +27,26 @@ def test_sorting_algorithm(sort_func):
     A = [-5, 0, 3, -2, 1]
     assert sort_func(A) == sorted(A)
 
-if __name__ == '__main__':
-    # Parse the command-line argument
-    parser = argparse.ArgumentParser()
-    parser.add_argument('sort', help='Name of the sorting algorithm module (without .py extension)')
-    args = parser.parse_args()
+def pytest_generate_tests(metafunc):
+    if "sort_func" in metafunc.fixturenames:
+        # Get the path of the "sorts" directory
+        sorts_dir = os.path.dirname(os.path.abspath(__file__)) + '/sorts'
 
-    # Import the sorting algorithm module
-    sort_module = importlib.import_module(args.sort)
+        # Iterate over each file in the "sorts" directory
+        for file_name in os.listdir(sorts_dir):
+            if file_name.endswith('.py') and file_name != '__init__.py':
+                # Remove the file extension to get the module name
+                module_name = file_name[:-3]
 
-    # Check if the specified sorting algorithm function exists
-    if False == hasattr(sort_module, 'sort'):
-        print(f"Sorting algorithm 'sort' not found in module '{args.sort}'.")
-        exit(1)
+                # Dynamically import the sorting algorithm module
+                sort_module = importlib.import_module(f'sorts.{module_name}')
 
-    # If it does, run the test
-    sort_func = getattr(sort_module, 'sort')
-    test_sorting_algorithm(sort_func)
+                # Check if the specified sorting algorithm function exists
+                if hasattr(sort_module, 'sort'):
+                    # Retrieve the sorting algorithm function
+                    sort_func = getattr(sort_module, 'sort')
+
+                    # Add the sorting algorithm function as a parameter to the test function
+                    metafunc.parametrize("sort_func", [sort_func], ids=[module_name])
+                else:
+                    pytest.fail(f"Sorting algorithm 'sort' not found in module '{module_name}'")
