@@ -27,11 +27,11 @@ def _merge(arr: List[int], left: int, middle: int, right: int):
     R = [0] * (n2 + 1)
 
     # Copy left & right subarrays into temporary arrays
-    for i in range(middle - left):
+    for i in range(n1):
         L[i] = arr[left + i]
     L[n1] = 2**63 - 1 # placeholder for infinitly large value.
 
-    for i in range(right - middle):
+    for i in range(n2):
         R[i] = arr[middle + i]
     R[n2] = 2**63 - 1 # placeholder for infinitly large value.
     
@@ -45,10 +45,3 @@ def _merge(arr: List[int], left: int, middle: int, right: int):
         else:
             arr[i] = R[r_i]
             r_i += 1
-
-A = [1, 5, 3]
-print(f"Before: {A}")
-
-print(f"After: {sort(A)}")
-print(f"A after: {A}")
-
