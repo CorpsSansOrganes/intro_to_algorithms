@@ -2,6 +2,7 @@ import pytest
 from sorts.insertion_sort import sort as insertion_sort
 from sorts.selection_sort import sort as selection_sort
 from searches.linear_search import search as linear_search
+from sorts.merge_sort import sort as merge_sort
 
 def _test_sorting_algorithm(sort_func):
     # Test case 1: Array in ascending order
@@ -53,3 +54,6 @@ def test_selection_sort():
 
 def test_insertion_sort():
     _test_sorting_algorithm(insertion_sort)
+
+def test_merge_sort():
+    _test_sorting_algorithm(merge_sort)
