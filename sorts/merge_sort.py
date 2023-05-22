@@ -1,4 +1,10 @@
 from typing import List 
+
+def sort(arr: List[list]) -> List[int]:
+    temp: List[int] = list(arr)
+    merge_sort(temp, 0, len(temp))
+    return temp 
+
 def merge_sort(arr: List[int], left: int = 0, right: int = None):
     '''
     Assumption: for each e in arr, e < 2^63 - 1
@@ -43,6 +49,6 @@ def _merge(arr: List[int], left: int, middle: int, right: int):
 A = [1, 5, 3]
 print(f"Before: {A}")
 
-merge_sort(A)
-print(f"After: {A}")
+print(f"After: {sort(A)}")
+print(f"A after: {A}")
 
