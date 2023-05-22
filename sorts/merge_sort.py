@@ -23,11 +23,11 @@ def _merge(arr: List[int], left: int, middle: int, right: int):
     # Copy left & right subarrays into temporary arrays
     for i in range(middle - left):
         L[i] = arr[left + i]
-    L[n1] = 2**63 - 1
+    L[n1] = 2**63 - 1 # placeholder for infinitly large value.
 
     for i in range(right - middle):
         R[i] = arr[middle + i]
-    R[n2] = 2**63 - 1
+    R[n2] = 2**63 - 1 # placeholder for infinitly large value.
     
     # Merging into arr
     r_i = 0
