@@ -1,6 +1,6 @@
 from typing import List 
 
-def sort(arr: List[list]) -> List[int]:
+def sort(arr: List[int]) -> List[int]:
     temp: List[int] = list(arr)
     merge_sort(temp, 0, len(temp))
     return temp 
