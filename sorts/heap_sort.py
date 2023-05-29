@@ -8,7 +8,7 @@ def sort(arr: List[int]) -> List[int]:
 def heap_sort(arr: List[int]):
     build_max_heap(arr)
     for i in range(len(arr) - 1, 0, -1):
-        A[0], A[i] = A[i], A[0]
+        arr[0], arr[i] = arr[i], arr[0]
         heapify(arr, i, 0)
     return arr
 
@@ -17,8 +17,20 @@ def build_max_heap(arr: List[int]):
         heapify(arr, len(arr), i)
 
 def heapify(arr: List[int], heap_size: int, i: int):
+    largest = i
     l = 2*i + 1
     r = 2*i + 2
 
-    if l <= len(arr) and
+    # Finding the biggest among i and its children.
+    if l < heap_size and arr[largest] < arr[l]:
+        largest = l 
+    if r < heap_size and arr[largest] < arr[r]:
+        largest = r
 
+    # Base case: no swap was performed
+    if largest == i:
+        return
+
+    # Swap, and continue recursively
+    arr[i], arr[largest] = arr[largest], arr[i]
+    heapify(arr, heap_size, largest)
