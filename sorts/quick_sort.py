@@ -9,12 +9,11 @@ def sort(arr: List[int]) -> List[int]:
 def quick_sort(arr: List[int], l: int, r: int):
     if (r - l <= 1):
         return 
-    pivot = _randomize_partition(arr, l, r)
+    pivot = _randomized_partition(arr, l, r)
     quick_sort(arr, l, pivot)
     quick_sort(arr, pivot + 1, r)
 
-
-def _randomize_partition(arr: List[int], l: int, r: int) -> int:
+def _randomized_partition(arr: List[int], l: int, r: int) -> int:
     i = random.randint(l, r - 1)
     arr[i], arr[r - 1] = arr[r - 1], arr[i]
     return _partition(arr, l, r)
