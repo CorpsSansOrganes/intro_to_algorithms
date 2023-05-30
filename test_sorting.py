@@ -4,6 +4,7 @@ from sorts.selection_sort import sort as selection_sort
 from searches.linear_search import search as linear_search
 from sorts.merge_sort import sort as merge_sort
 from sorts.heap_sort import sort as heap_sort
+from sorts.quick_sort import sort as quick_sort
 
 def _test_sorting_algorithm(sort_func):
     # Test case 1: Array in ascending order
@@ -61,3 +62,6 @@ def test_merge_sort():
 
 def test_heap_sort():
     _test_sorting_algorithm(heap_sort)
+
+def test_quick_sort():
+    _test_sorting_algorithm(quick_sort)

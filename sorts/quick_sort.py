@@ -11,7 +11,7 @@ def quick_sort(arr: List[int], l: int, r: int):
         return 
     pivot = _randomize_partition(arr, l, r)
     quick_sort(arr, l, pivot)
-    quick_sort(arr, pivot, r)
+    quick_sort(arr, pivot + 1, r)
 
 
 def _randomize_partition(arr: List[int], l: int, r: int) -> int:
@@ -24,7 +24,7 @@ def _partition(arr: List[int], l: int, r: int) -> int:
     i = l - 1
 
     # Putting all elements <= then the pivot to the left.
-    for j in range(l, r):
+    for j in range(l, r - 1):
         if arr[j] <= pivot:
             i += 1
             arr[j], arr[i] = arr[i], arr[j]
@@ -33,5 +33,3 @@ def _partition(arr: List[int], l: int, r: int) -> int:
     i += 1
     arr[i], arr[r - 1] = arr[r - 1], arr[i]
     return i
-
-    
