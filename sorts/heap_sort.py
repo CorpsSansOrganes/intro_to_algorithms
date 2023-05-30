@@ -6,17 +6,16 @@ def sort(arr: List[int]) -> List[int]:
     return temp 
 
 def heap_sort(arr: List[int]):
-    build_max_heap(arr)
+    _build_max_heap(arr)
     for i in range(len(arr) - 1, 0, -1):
         arr[0], arr[i] = arr[i], arr[0]
-        heapify(arr, i, 0)
-    return arr
+        _heapify(arr, i, 0)
 
-def build_max_heap(arr: List[int]):
+def _build_max_heap(arr: List[int]):
     for i in range(len(arr) // 2 - 1, -1, -1):
-        heapify(arr, len(arr), i)
+        _heapify(arr, len(arr), i)
 
-def heapify(arr: List[int], heap_size: int, i: int):
+def _heapify(arr: List[int], heap_size: int, i: int):
     largest = i
     l = 2*i + 1
     r = 2*i + 2
@@ -33,4 +32,4 @@ def heapify(arr: List[int], heap_size: int, i: int):
 
     # Swap, and continue recursively
     arr[i], arr[largest] = arr[largest], arr[i]
-    heapify(arr, heap_size, largest)
+    _heapify(arr, heap_size, largest)
