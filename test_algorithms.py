@@ -39,7 +39,7 @@ def _test_search_algorithm(search_func):
 
     # Test case 2: Array with duplicate elements 
     A = [1, 1, 2, 3, 4, 5]
-    assert A[search_func(A, 1)] == 1
+    assert search_func(A, 1) == A.index(1)
 
     # Test case 3: Empty array 
     A = []
@@ -47,6 +47,23 @@ def _test_search_algorithm(search_func):
 
     # Test case 4: value isn't in array 
     A = [123, 34, 1535, 3]
+    assert search_func(A, 1) is None
+
+def _test_search_algorithm_over_sorted_array(search_func):
+    # Test case 1: Trivial case
+    A = [1, 2, 3, 4, 5]
+    assert search_func(A, 1) == A.index(1)
+
+    # Test case 2: Array with duplicate elements 
+    A = [1, 1, 2, 3, 4, 5]
+    assert A[search_func(A, 1)] == 1
+
+    # Test case 3: Empty array 
+    A = []
+    assert search_func(A, 1) is None
+
+    # Test case 4: value isn't in array 
+    A = [3, 34, 123, 1535]
     assert search_func(A, 1) is None
 
 def test_linear_search():
@@ -68,4 +85,4 @@ def test_quick_sort():
     _test_sorting_algorithm(quick_sort)
 
 def test_binary_search():
-    _test_search_algorithm(binary_search)
+    _test_search_algorithm_over_sorted_array(binary_search)
