@@ -5,6 +5,7 @@ from searches.linear_search import search as linear_search
 from sorts.merge_sort import sort as merge_sort
 from sorts.heap_sort import sort as heap_sort
 from sorts.quick_sort import sort as quick_sort
+from searches.binary_search import search as binary_search
 
 def _test_sorting_algorithm(sort_func):
     # Test case 1: Array in ascending order
@@ -38,7 +39,7 @@ def _test_search_algorithm(search_func):
 
     # Test case 2: Array with duplicate elements 
     A = [1, 1, 2, 3, 4, 5]
-    assert search_func(A, 1) == A.index(1)
+    assert A[search_func(A, 1)] == 1
 
     # Test case 3: Empty array 
     A = []
@@ -65,3 +66,6 @@ def test_heap_sort():
 
 def test_quick_sort():
     _test_sorting_algorithm(quick_sort)
+
+def test_binary_search():
+    _test_search_algorithm(binary_search)
