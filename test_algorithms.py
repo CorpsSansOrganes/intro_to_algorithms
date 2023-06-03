@@ -66,6 +66,22 @@ def _test_search_algorithm_over_sorted_array(search_func):
     A = [3, 34, 123, 1535]
     assert search_func(A, 1) is None
 
+    # Test case 5: Last element in the array 
+    A = [1, 3, 5, 7, 9]
+    assert search_func(A, 9) == A.index(9)
+
+    # Test case 6: Element in the middle cannot be found
+    A = [1, 2, 6, 10]
+    assert search_func(A, 5) is None
+
+    # Test case 7: First element in even array 
+    A = [1, 3, 5, 7, 9, 11]
+    assert search_func(A, 1) == A.index(1)
+
+    # Test case 8: First element in odd array 
+    A = [1, 3, 5, 7, 9]
+    assert search_func(A, 1) == A.index(1)
+
 def test_linear_search():
     _test_search_algorithm(linear_search)
 
