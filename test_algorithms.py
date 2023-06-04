@@ -8,6 +8,7 @@ from sorts.quick_sort import sort as quick_sort
 from searches.binary_search import search as binary_search
 from selects.find_min import find_min
 from selects.find_max import find_max
+from selects.quick_select import select as quick_select
 
 def _test_sorting_algorithm(sort_func):
     # Test case 1: Array in ascending order
@@ -116,6 +117,49 @@ def test_find_max():
     arr = [7, 6]
     assert find_max(arr) == 7
 
+def _test_select_algorithm(select_func):
+    # Test case 1: A is an empty array
+    A = []
+    i = 1
+    with pytest.raises(IndexError):
+        select_func(A, i)
+
+    # Test case 2: A has only one element
+    A = [5]
+    i = 1
+    assert select_func(A, i) == 5
+
+    # Test case 3: A has multiple elements, smallest element
+    A = [9, 5, 3, 1, 6]
+    i = 1
+    assert select_func(A, i) == 1
+
+    # Test case 4: A has multiple elements, largest element
+    A = [9, 5, 3, 1, 6]
+    i = 5
+    assert select_func(A, i) == 9
+
+    # Test case 5: A has multiple elements, middle element
+    A = [9, 5, 3, 1, 6]
+    i = 3
+    assert select_func(A, i) == 5
+
+    # Test case 6: A has negative numbers
+    A = [-3, -1, -5, -2]
+    i = 1
+    assert select_func(A, i) == -5
+
+    # Test case 7: A has repeated elements
+    A = [4, 2, 3, 7, 1]
+    i = 4
+    assert select_func(A, i) == 7
+
+    # Test case 8: i is out of range
+    A = [1, 2, 3, 4, 5]
+    i = 10
+    with pytest.raises(IndexError):
+        select_func(A, i)
+
 def test_linear_search():
     _test_search_algorithm(linear_search)
 
@@ -136,3 +180,6 @@ def test_quick_sort():
 
 def test_binary_search():
     _test_search_algorithm_over_sorted_array(binary_search)
+
+def test_quick_select():
+    _test_select_algorithm(quick_select)
