@@ -121,8 +121,7 @@ def _test_select_algorithm(select_func):
     # Test case 1: A is an empty array
     A = []
     i = 1
-    with pytest.raises(IndexError):
-        select_func(A, i)
+    assert select_func(A, i) is None
 
     # Test case 2: A has only one element
     A = [5]
@@ -157,8 +156,7 @@ def _test_select_algorithm(select_func):
     # Test case 8: i is out of range
     A = [1, 2, 3, 4, 5]
     i = 10
-    with pytest.raises(IndexError):
-        select_func(A, i)
+    assert select_func(A, i) is None
 
 def test_linear_search():
     _test_search_algorithm(linear_search)
