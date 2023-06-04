@@ -6,6 +6,8 @@ from sorts.merge_sort import sort as merge_sort
 from sorts.heap_sort import sort as heap_sort
 from sorts.quick_sort import sort as quick_sort
 from searches.binary_search import search as binary_search
+from selects.find_min import find_min
+from selects.find_max import find_max
 
 def _test_sorting_algorithm(sort_func):
     # Test case 1: Array in ascending order
@@ -81,6 +83,38 @@ def _test_search_algorithm_over_sorted_array(search_func):
     # Test case 8: First element in odd array 
     A = [1, 3, 5, 7, 9]
     assert search_func(A, 1) == A.index(1)
+
+def test_find_min():
+    arr = [4, 2, 9, 1, 7]
+    assert find_min(arr) == 1
+
+    arr = [5, 8, 3, 6, 2]
+    assert find_min(arr) == 2
+
+    arr = [10, 4, 6, 3, 1]
+    assert find_min(arr) == 1
+
+    arr = [3]
+    assert find_min(arr) == 3
+
+    arr = [7, 6]
+    assert find_min(arr) == 6
+
+def test_find_max():
+    arr = [4, 2, 9, 1, 7]
+    assert find_max(arr) == 9
+
+    arr = [5, 8, 3, 6, 2]
+    assert find_max(arr) == 8
+
+    arr = [10, 4, 6, 3, 1]
+    assert find_max(arr) == 10
+
+    arr = [3]
+    assert find_max(arr) == 3
+
+    arr = [7, 6]
+    assert find_max(arr) == 7
 
 def test_linear_search():
     _test_search_algorithm(linear_search)
