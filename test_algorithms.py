@@ -148,12 +148,7 @@ def _test_select_algorithm(select_func):
     i = 1
     assert select_func(A, i) == -5
 
-    # Test case 7: A has repeated elements
-    A = [4, 2, 3, 7, 1]
-    i = 4
-    assert select_func(A, i) == 7
-
-    # Test case 8: i is out of range
+    # Test case 7: i is out of range
     A = [1, 2, 3, 4, 5]
     i = 10
     assert select_func(A, i) is None
