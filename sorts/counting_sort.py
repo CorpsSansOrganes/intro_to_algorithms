@@ -22,7 +22,7 @@ def counting_sort(arr: List[int], k: int) -> List[int]:
 
 def counting_sort_w_negatives(arr: List[int], m: int, k: int) -> List[int]:
     res = [0] * len(arr)
-    offset = abs(m)
+    offset = -1 * m 
     count = [0] * (k + offset + 1)
 
     for a in arr:
@@ -34,3 +34,6 @@ def counting_sort_w_negatives(arr: List[int], m: int, k: int) -> List[int]:
         res[count[a + offset]] = a
     
     return res
+
+A = [5, 4, 2, 3]
+print(sort(A))
