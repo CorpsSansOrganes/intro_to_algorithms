@@ -4,7 +4,7 @@ def sort(arr: List[int]) -> List[int]:
     if not arr:
         return arr
     #return counting_sort(arr, max(arr))
-    return counting_sort_w_negatives(arr, max(arr))
+    return counting_sort_w_negatives(arr, min(arr), max(arr))
 
 def counting_sort(arr: List[int], k: int) -> List[int]:
     res = [0] * len(arr)
@@ -20,9 +20,9 @@ def counting_sort(arr: List[int], k: int) -> List[int]:
     
     return res
 
-def counting_sort_w_negatives(arr: List[int], k: int) -> List[int]:
+def counting_sort_w_negatives(arr: List[int], m: int, k: int) -> List[int]:
     res = [0] * len(arr)
-    offset = abs(min(arr))
+    offset = abs(m)
     count = [0] * (k + offset + 1)
 
     for a in arr:
