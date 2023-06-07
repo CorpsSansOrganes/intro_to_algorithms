@@ -9,6 +9,7 @@ from searches.binary_search import search as binary_search
 from selects.find_min import find_min
 from selects.find_max import find_max
 from selects.quick_select import select as quick_select
+from sorts.counting_sort import sort as counting_sort
 
 def _test_sorting_algorithm(sort_func):
     # Test case 1: Array in ascending order
@@ -176,3 +177,6 @@ def test_binary_search():
 
 def test_quick_select():
     _test_select_algorithm(quick_select)
+
+def test_counting_sort():
+    _test_sorting_algorithm(counting_sort)
