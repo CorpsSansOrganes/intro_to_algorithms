@@ -38,30 +38,17 @@ def _test_sorting_algorithm(sort_func, negative_input = True):
         A = [-5, 0, 3, -2, 1]
         assert sort_func(A) == sorted(A)
 
-def _test_search_algorithm(search_func):
+def _test_search_algorithm(search_func, sorted_input = False):
     # Test case 1: Trivial case 
     A = [1, 2, 3, 4, 5]
+    if sorted_input == True:
+        A = sorted(A)
     assert search_func(A, 1) == A.index(1)
 
     # Test case 2: Array with duplicate elements 
     A = [1, 1, 2, 3, 4, 5]
-    assert search_func(A, 1) == A.index(1)
-
-    # Test case 3: Empty array 
-    A = []
-    assert search_func(A, 1) is None
-
-    # Test case 4: value isn't in array 
-    A = [123, 34, 1535, 3]
-    assert search_func(A, 1) is None
-
-def _test_search_algorithm_over_sorted_array(search_func):
-    # Test case 1: Trivial case
-    A = [1, 2, 3, 4, 5]
-    assert search_func(A, 1) == A.index(1)
-
-    # Test case 2: Array with duplicate elements 
-    A = [1, 1, 2, 3, 4, 5]
+    if sorted_input == True:
+        A = sorted(A)
     assert A[search_func(A, 1)] == 1
 
     # Test case 3: Empty array 
@@ -69,7 +56,9 @@ def _test_search_algorithm_over_sorted_array(search_func):
     assert search_func(A, 1) is None
 
     # Test case 4: value isn't in array 
-    A = [3, 34, 123, 1535]
+    A = [123, 34, 1535, 3]
+    if sorted_input == True:
+        A = sorted(A)
     assert search_func(A, 1) is None
 
     # Test case 5: Last element in the array 
@@ -175,7 +164,7 @@ def test_quick_sort():
     _test_sorting_algorithm(quick_sort)
 
 def test_binary_search():
-    _test_search_algorithm_over_sorted_array(binary_search)
+    _test_search_algorithm(binary_search, sorted_input=True)
 
 def test_quick_select():
     _test_select_algorithm(quick_select)
