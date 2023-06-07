@@ -11,7 +11,6 @@ def radix_sort(arr: List[int], d: int) -> List[int]:
     place = 1
     for _ in range(d):
         _counting_sort(arr, place)
-        print(arr)
         place *= 10
     
     return arr 
