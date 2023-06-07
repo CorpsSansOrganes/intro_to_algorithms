@@ -1,5 +1,6 @@
 from typing import List 
 from itertools import accumulate
+
 def sort(arr: List[int]) -> List[int]:
     if not arr:
         return arr
