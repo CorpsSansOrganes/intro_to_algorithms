@@ -34,6 +34,3 @@ def counting_sort_w_negatives(arr: List[int], m: int, k: int) -> List[int]:
         res[count[a + offset]] = a
     
     return res
-
-A = [5, 4, 2, 3]
-print(sort(A))
