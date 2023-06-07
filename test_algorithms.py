@@ -10,8 +10,9 @@ from selects.find_min import find_min
 from selects.find_max import find_max
 from selects.quick_select import select as quick_select
 from sorts.counting_sort import sort as counting_sort
+from sorts.radix_sort import sort as radix_sort
 
-def _test_sorting_algorithm(sort_func):
+def _test_sorting_algorithm(sort_func, negative_input = True):
     # Test case 1: Array in ascending order
     A = [1, 2, 3, 4, 5]
     assert sort_func(A) == sorted(A)
@@ -31,10 +32,11 @@ def _test_sorting_algorithm(sort_func):
     # Test case 5: Array with a single element
     A = [42]
     assert sort_func(A) == sorted(A)
-   
+  
     # Test case 6: Array with negative numbers
-    A = [-5, 0, 3, -2, 1]
-    assert sort_func(A) == sorted(A)
+    if negative_input == True: 
+        A = [-5, 0, 3, -2, 1]
+        assert sort_func(A) == sorted(A)
 
 def _test_search_algorithm(search_func):
     # Test case 1: Trivial case 
@@ -180,3 +182,7 @@ def test_quick_select():
 
 def test_counting_sort():
     _test_sorting_algorithm(counting_sort)
+
+def test_radix_sort():
+    _test_sorting_algorithm(radix_sort, negative_input=False)
+
